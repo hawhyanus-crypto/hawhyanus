@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Hawhyanus Jiwana · Profil</title>
+    <style>
+        /* Reset sederhana */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: #fafafa;
+            color: #222;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Container utama */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 24px 28px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        /* Navigasi + bahasa */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #2b6e4c; /* hijau sederhana */
+            letter-spacing: -0.3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 20px;
+            color: #333;
+            font-size: 0.9rem;
+            background: transparent;
+            transition: background 0.1s;
+        }
+
+        .nav-links a:hover {
+            background: #f0f0f0;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 4px;
+        }
+
+        .lang-btn {
+            background: white;
+            border: 1px solid #d0d0d0;
+            color: #444;
+            padding: 4px 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: 0.1s;
+        }
+
+        .lang-btn.active {
+            background: #2b6e4c;
+            border-color: #2b6e4c;
+            color: white;
+        }
+
+        /* Kontrol bahasa */
+        .lang-id, .lang-en, .lang-zh {
+            display: none;
+        }
+
+        body[lang="id"] .lang-id {
+            display: inline;
+        }
+
+        body[lang="en"] .lang-en {
+            display: inline;
+        }
+
+        body[lang="zh"] .lang-zh {
+            display: inline;
+        }
+
+        body[lang="id"] .lang-id.block,
+        body[lang="en"] .lang-en.block,
+        body[lang="zh"] .lang-zh.block {
+            display: block;
+        }
+
+        /* Section umum */
+        section {
+            margin-bottom: 44px;
+            scroll-margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: #1e3a4d;
+            border-left: 4px solid #2b6e4c;
+            padding-left: 12px;
+        }
+
+        /* Grid dasar */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 20px 18px;
+        }
+
+        .profile-header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .initials {
+            width: 60px;
+            height: 60px;
+            background: #dce8e2;
+            color: #1e4a34;
+            font-weight: 700;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #f4f7fa;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 4px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            border: 1px solid #1e4a34;
+            color: #1e4a34;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+
+        .btn:hover {
+            background: #1e4a34;
+            color: white;
+        }
+
+        .btn-wa {
+            background: #25D366;
+            border-color: #25D366;
+            color: white;
+        }
+
+        .btn-wa:hover {
+            background: #1da15b;
+            border-color: #1da15b;
+        }
+
+        ul.list-minimal {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        ul.list-minimal li {
+            padding: 7px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 8px;
+        }
+
+        ul.list-minimal li:last-child {
+            border-bottom: none;
+        }
+
+        .writing-list li {
+            display: flex;
+            gap: 8px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .writing-list li:last-child {
+            border-bottom: none;
+        }
+
+        .highlight-box {
+            background: #f6f8f7;
+            padding: 14px;
+            border-radius: 10px;
+            margin-top: 16px;
+        }
+
+        .classroom-box {
+            background: #f8fafb;
+            border: 1px solid #d4e0da;
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 32px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body lang="id">
+    <div class="container">
+        <!-- Navigasi + Bahasa -->
+        <div class="navbar">
+            <div class="logo">Hawhyanus Jiwana</div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <div class="nav-links">
+                    <a href="#home"><span class="lang-id">Beranda</span><span class="lang-en">Home</span><span class="lang-zh">首页</span></a>
+                    <a href="#skills"><span class="lang-id">Keahlian</span><span class="lang-en">Skills</span><span class="lang-zh">技能</span></a>
+                    <a href="#writing"><span class="lang-id">Karya Tulis</span><span class="lang-en">Writings</span><span class="lang-zh">著作</span></a>
+                    <a href="#classroom"><span class="lang-id">Classroom</span><span class="lang-en">Classroom</span><span class="lang-zh">课堂</span></a>
+                </div>
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="id">ID</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- HOME -->
+        <section id="home">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="profile-header">
+                        <div class="initials">HJ</div>
+                        <div>
+                            <h1 style="font-size: 1.8rem; font-weight: 700;">Hawhyanus Jiwana</h1>
+                            <p style="color: #2b6e4c; font-weight: 500;">
+                                <span class="lang-id">S.Sos (Sarjana Sosial)</span>
+                                <span class="lang-en">S.Sos (Bachelor of Social Science)</span>
+                                <span class="lang-zh">社会科学学士</span>
+                            </p>
+                        </div>
+                    </div>
+                    <p><span class="lang-id">Hubungan Internasional · UPN "Veteran" Jawa Timur</span>
+                        <span class="lang-en">International Relations · UPN "Veteran" East Java</span>
+                        <span class="lang-zh">国际关系 · UPN "Veteran" 东爪哇省</span></p>
+                    <p style="margin-top: 8px; color: #3a4a5a;" class="lang-id">
+                        Profesional adaptif dengan keahlian riset, diplomasi, manajemen data, SAP, serta pengalaman wirausaha dan general affair.
+                    </p>
+                    <p style="margin-top: 8px; color: #3a4a5a;" class="lang-en">
+                        Adaptive professional with expertise in research, diplomacy, data management, and entrepreneurial experience.
+                    </p>
+                    <p style="margin-top: 8px; color: #3a4a5a;" class="lang-zh">
+                        具备研究、外交、数据管理专业技能及创业经验的适应型专业人才。
+                    </p>
+                    <div style="margin-top: 12px;">
+                        <span class="badge">Sidoarjo, Indonesia</span>
+                        <span class="badge">hawhyanus@gmail.com</span>
+                        <span class="badge"><span class="lang-id">Inggris (EPT 507)</span><span class="lang-en">English (EPT 507)</span><span class="lang-zh">英语 (EPT 507)</span></span>
+                    </div>
+                    <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="https://wa.me/6285855732154" target="_blank" class="btn btn-wa">WhatsApp</a>
+                        <a href="#skills" class="btn"><span class="lang-id">Keahlian</span><span class="lang-en">Skills</span><span class="lang-zh">技能</span></a>
+                    </div>
+                </div>
+                <div class="card" style="background: #f9faf9;">
+                    <h3 style="font-weight: 600; margin-bottom: 12px; color: #1e3a4d;">
+                        <span class="lang-id">Sorotan Cepat</span>
+                        <span class="lang-en">Quick Highlights</span>
+                        <span class="lang-zh">快速亮点</span>
+                    </h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 14px;"><strong><span class="lang-id">Marketing & Entrepreneur (Tempe)</span><span class="lang-en">Marketing & Entrepreneur (Tempeh)</span><span class="lang-zh">营销与创业 (豆酵饼)</span></strong><br>
+                            <span class="lang-id">2015–sekarang · Produksi, pemasaran, strategi pasar.</span>
+                            <span class="lang-en">2015–present · Production, marketing, market strategy.</span>
+                            <span class="lang-zh">2015至今 · 生产、营销与市场策略。</span></li>
+                        <li style="margin-bottom: 14px;"><strong>Intern General Affair · PT Central Proteina Prima Tbk</strong><br>
+                            <span class="lang-id">Okt 2022 – Feb 2023 · SAP, pengarsipan, rapat.</span>
+                            <span class="lang-en">Oct 2022 – Feb 2023 · SAP, filing, meetings.</span>
+                            <span class="lang-zh">2022.10 – 2023.2 · SAP，归档，会议。</span></li>
+                        <li><strong><span class="lang-id">Best Speaker · Konferensi Mahasiswa Asia-Afrika 2022</span><span class="lang-en">Best Speaker · Asia-Africa Student Conference 2022</span><span class="lang-zh">最佳演讲者 · 2022亚非学生会议</span></strong><br>
+                            <span class="lang-id">Unpad, November 2022</span>
+                            <span class="lang-en">Unpad, November 2022</span>
+                            <span class="lang-zh">巴查查兰大学，2022年11月</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- KEAHLIAN -->
+        <section id="skills">
+            <h2 class="section-title">
+                <span class="lang-id">Keahlian & Kompetensi</span>
+                <span class="lang-en">Skills & Competencies</span>
+                <span class="lang-zh">技能与能力</span>
+            </h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3 style="color: #1e3a4d; margin-bottom: 8px;"><span class="lang-id">Teknis & Operasional</span><span class="lang-en">Technical & Operational</span><span class="lang-zh">技术与操作</span></h3>
+                    <ul class="list-minimal">
+                        <li>Microsoft Office</li>
+                        <li>SAP</li>
+                        <li><span class="lang-id">Manajemen Data & Pengarsipan</span><span class="lang-en">Data Management & Filing</span><span class="lang-zh">数据管理与归档</span></li>
+                        <li><span class="lang-id">Riset & Analisis Kebijakan</span><span class="lang-en">Research & Policy Analysis</span><span class="lang-zh">研究与政策分析</span></li>
+                    </ul>
+                    <p style="font-size: 0.9rem; margin-top: 12px; background: #edf2ef; padding: 6px 10px; border-radius: 6px;">
+                        <span class="lang-id">Sertifikasi BNSP: Data Management Staff (2021) & Pelaksana Ekspor Impor (2022)</span>
+                        <span class="lang-en">BNSP: Data Management Staff (2021) & Export-Import Executor (2022)</span>
+                        <span class="lang-zh">印尼国家职业认证：数据管理员(2021)与进出口执行员(2022)</span>
+                    </p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #1e3a4d; margin-bottom: 8px;"><span class="lang-id">Diplomasi & Soft Skills</span><span class="lang-en">Diplomacy & Soft Skills</span><span class="lang-zh">外交与软技能</span></h3>
+                    <ul class="list-minimal">
+                        <li><span class="lang-id">Diplomasi & Negosiasi</span><span class="lang-en">Diplomacy & Negotiation</span><span class="lang-zh">外交与谈判</span></li>
+                        <li><span class="lang-id">Intermediate Public Relations</span><span class="lang-en">Intermediate PR</span><span class="lang-zh">中级公共关系</span></li>
+                        <li><span class="lang-id">Komunikasi efektif & Organisasi</span><span class="lang-en">Effective Communication & Organization</span><span class="lang-zh">有效沟通与组织</span></li>
+                        <li><span class="lang-id">Pemahaman sosial & pasar</span><span class="lang-en">Social & Market Understanding</span><span class="lang-zh">社会与市场洞察</span></li>
+                    </ul>
+                    <span class="badge" style="margin-top: 12px;">Best Speaker ISCAAS 2022</span>
+                </div>
+                <div class="card">
+                    <h3 style="color: #1e3a4d; margin-bottom: 8px;"><span class="lang-id">Bahasa & Sertifikasi</span><span class="lang-en">Languages & Certifications</span><span class="lang-zh">语言与证书</span></h3>
+                    <ul class="list-minimal">
+                        <li><span class="lang-id">Inggris Aktif – EPT 507</span><span class="lang-en">English – EPT 507</span><span class="lang-zh">英语 – EPT 507</span></li>
+                        <li>Data Management Staff (BNSP)</li>
+                        <li>Pelaksana Ekspor Impor (BNSP)</li>
+                        <li><span class="lang-id">Asisten Dosen Pengantar HI (2021)</span><span class="lang-en">Teaching Assistant Intro to IR (2021)</span><span class="lang-zh">国际关系导论助教 (2021)</span></li>
+                    </ul>
+                    <p style="margin-top: 12px;"><strong>IPK 3.57</strong> · <span class="lang-id">Sangat Memuaskan</span><span class="lang-en">Very Satisfactory</span><span class="lang-zh">非常满意</span></p>
+                </div>
+            </div>
+        </section>
+        <section id="writing">
+            <h2 class="section-title">
+                <span class="lang-id">Karya Tulis & Publikasi</span>
+                <span class="lang-en">Writings & Publications</span>
+                <span class="lang-zh">著作与发表</span>
+            </h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color: #1e3a4d; margin-bottom: 10px;"><span class="lang-id">Tulisan Pribadi</span><span class="lang-en">Personal Essays</span><span class="lang-zh">个人随笔</span></h3>
+                    <ul class="writing-list" style="list-style: none; padding-left: 0;">
+                        <li><span class="lang-id"><strong>BTS dan Industri Kreatif:</strong> Catatan riset (2022)</span><span class="lang-en"><strong>BTS and Creative Industry:</strong> Research notes (2022)</span><span class="lang-zh"><strong>BTS与创意产业：</strong>研究笔记 (2022)</span></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="color: #1e3a4d; margin-bottom: 10px;"><span class="lang-id">Publikasi & Kontribusi</span><span class="lang-en">Publications & Contributions</span><span class="lang-zh">发表与贡献</span></h3>
+                    <ul class="writing-list" style="list-style: none; padding-left: 0;">
+                        <li><span class="lang-id"><strong>Asisten Penulis:</strong> "Jaringan Industri Kreatif Global: BTS & Digital Marketing di Indonesia" (2021)</span><span class="lang-en"><strong>Writer Assistant:</strong> "Global Creative Industry Network: BTS & Digital Marketing in Indonesia" (2021)</span><span class="lang-zh"><strong>写作助理：</strong>《全球创意产业网络：BTS与印尼数字营销》(2021)</span></li>
+                        <li><span class="lang-id"><strong>Best Speaker:</strong> International Student Conference on Asia-Africa Studies 2022</span><span class="lang-en"><strong>Best Speaker:</strong> International Student Conference on Asia-Africa Studies 2022</span><span class="lang-zh"><strong>最佳演讲者：</strong>2022亚非研究国际学生会议</span></li>
+                </div>
+            </div>
+        </section>
+
+        <!-- GOOGLE CLASSROOM -->
+        <section id="classroom">
+            <h2 class="section-title">Google Classroom</h2>
+            <div class="classroom-box">
+                <h3 style="font-weight: 600; margin-bottom: 8px;">
+                    <span class="lang-id">Kelas Kolaborasi</span>
+                    <span class="lang-en">Collaborative Class</span>
+                    <span class="lang-zh">协作课堂</span>
+                </h3>
+                <a href="https://docs.google.com/presentation/" target="_blank" class="btn" style="background: #1e4a34; color: white; border: none; padding: 10px 24px;">
+                    <span class="lang-id">Buka Google Slide</span>
+                    <span class="lang-en">Open Google Slides</span>
+                    <span class="lang-zh">打开谷歌幻灯片</span>
+                </a>
+            </div>
+        </section>
+
+        <div class="footer">
+            <span>© 2025 Hawhyanus Jiwana</span>
+        </div>
+    </div>
+
+    <!-- Script untuk bahasa (tanpa library) -->
+    <script>
+        (function() {
+            const body = document.body;
+            const buttons = document.querySelectorAll('.lang-btn');
+
+            function setLanguage(lang) {
+                body.setAttribute('lang', lang);
+                buttons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+                localStorage.setItem('profile-lang', lang);
+            }
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+            });
+
+            const saved = localStorage.getItem('profile-lang') || 'id';
+            setLanguage(saved);
+
+            // Smooth scroll ringan
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
